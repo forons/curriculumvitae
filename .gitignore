@@ -225,3 +225,6 @@ TSWLatexianTemp*
 
 image.png
 Makefile.europasscvcurriculum.pdf
+
+# REMOVE SIGNATURE FROM ADD
+signature.*
