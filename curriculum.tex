@@ -3,13 +3,16 @@
 % !TEX spellcheck = en_GB
 % !TEX options=--shell-escape
 
+% DOCUMENTATION:
+% To generate the pdfs run:
+%
+% pdflatex -shell-escape curriculum.tex
+
 \documentclass[english,a4paper]{europasscv}
 
 \ifx\condition\undefined
   \immediate\write18{
-    rm ./curriculum-fullinfo.pdf}
-  \immediate\write18{
-    rm ./curriculum-noinfo.pdf}
+    find . -type f -name 'curriculum*' ! -name 'curriculum.tex' -delete}
   \immediate\write18{
     pdflatex --jobname=\jobname-fullinfo
     "\gdef\string\condition{0}
@@ -26,20 +29,6 @@
 \global\newtoggle{space}
 \global\newtoggle{authorization}
 \global\newtoggle{signature}
-
-
-% \ifcase\condition
-%   % \condition = 0, noinfo
-%   \excludecomment{personalinfo}
-%   \excludecomment{signature}
-%   \includecomment{space}
-%   \includecomment{authorization}
-% \or % \condition = 1, fullinfo
-%   \includecomment{personalinfo}
-%   \includecomment{signature}
-%   \excludecomment{space}
-%   \excludecomment{authorization}
-% \fi
 
 \ifcase\condition
   \global\toggletrue{personalinfo}
