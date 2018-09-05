@@ -4,25 +4,73 @@
 
 \documentclass[english,a4paper]{europasscv}
 
-\ecvname{Daniele Foroni}
-\ecvaddress{Via Paoli, 17 - 38068 Rovereto, Trento (TN) - Italy}
-\ecvtelephone{+39 3480687589}
-\ecvemail{daniele.foroni@unitn.it}
-\ecvhomepage{http://disi.unitn.it/$\sim$foroni/}
-\ecvim{Skype}{forons90}
-\ecvim{Google Talk}{bsmith}
+\ifx\condition\undefined
+  \immediate\write18{
+    pdflatex --jobname=\jobname-fullinfo
+    "\gdef\string\condition{0}
+    \string\input\space\jobname"}
+  \immediate\write18{
+    pdflatex --jobname=\jobname-noinfo
+    "\gdef\string\condition{1}
+    \string\input\space\jobname"}
+  \expandafter\stop
+\fi
 
-\ecvdateofbirth{25/05/1990}
-\ecvnationality{Italian}
-\ecvgender{Male}
-\ecvpicture[width=3.8cm]{image.png}
+\usepackage{etoolbox}
+\global\newtoggle{personalinfo}
+\global\newtoggle{space}
+\global\newtoggle{authorization}
+\global\newtoggle{signature}
+
+
+% \ifcase\condition
+%   % \condition = 0, noinfo
+%   \excludecomment{personalinfo}
+%   \excludecomment{signature}
+%   \includecomment{space}
+%   \includecomment{authorization}
+% \or % \condition = 1, fullinfo
+%   \includecomment{personalinfo}
+%   \includecomment{signature}
+%   \excludecomment{space}
+%   \excludecomment{authorization}
+% \fi
+
+\ifcase\condition
+  \global\toggletrue{personalinfo}
+  \global\togglefalse{space}
+  \global\togglefalse{authorization}
+  \global\toggletrue{signature}
+\or
+  \global\togglefalse{personalinfo}
+  \global\toggletrue{space}
+  \global\toggletrue{authorization}
+  \global\togglefalse{signature}
+\fi
+
+\ecvname{Daniele Foroni}
+\iftoggle{personalinfo}{
+  \ecvaddress{Via Paoli, 17 - 38068 Rovereto, Trento (TN) - Italy}
+  \ecvtelephone{+39 3480687589}
+  \ecvemail{daniele.foroni@unitn.it}
+  \ecvhomepage{http://disi.unitn.it/$\sim$foroni/}
+  \ecvim{Skype}{forons90}
+  \ecvim{Google Talk}{bsmith}
+
+  \ecvdateofbirth{25/05/1990}
+  \ecvnationality{Italian}
+  \ecvgender{Male}
+  \ecvpicture[width=3.8cm]{image.png}
+}{}
 
 
 \begin{document}
   \begin{europasscv}
 
   \ecvpersonalinfo
-% \vspace*{-4em}
+  \iftoggle{space}{
+    \vspace*{-4em}
+  }{}
   \ecvbigitem{Position}{Tutorato Big Data and Social Networks}
 
   \ecvsection{Work experience}
@@ -98,11 +146,6 @@
       \end{ecvitemize}
   }
 
-  % \ecvblueitem{Publications}{
-  %   \textit{Putting Data Quality in Context}, under submission at Sigmod, (2017).
-  %   \newline\textit{On Contextualizing Data Quality}, ready for submission at Sigmod Record, (2017).
-  % }
-
   \ecvsection{Publications}
 
   \ecvblueitem{2018}{\textbf{Moira: A Goal-Oriented Incremental Machine Learning Approach to Dynamic Resource Cost Estimation in Distributed Stream Processing Systems} \newline
@@ -140,17 +183,21 @@
   % \end{ecvitemize}
   % }
 
+  % \ecvblueitem{Driving License}{B}
+
   \ecvblueitem{Computer skills}{Principal languages: Java, Scala, Python (2.7 and 3), Bash, GoLang, C\#.\newline Big data technologies: Hadoop, Spark, Flink, Kafka, Pig, Hive. I teach these technologies at the Master course \textit{Big Data and Social Network} at the University of Trento.}
 
-\vspace*{50pt}
-\begin{figure}[!hb]
-\centering
-\includegraphics[width=0.3\textwidth]{signature.pdf}
-\end{figure}
+  \iftoggle{signature}{
+    \vspace*{50pt}
+    \begin{figure}[!hb]
+    \centering
+    \includegraphics[width=0.3\textwidth]{signature.pdf}
+    \end{figure}
+  }{}
 
-%   Acconsento alla pubblicazione del mio CV in ottemperanza alle disposizioni di legge dettate in materia di trasparenza (D.Lgs. 33/2013).
-
-  % \ecvblueitem{Driving License}{B}
+  \iftoggle{authorization}{
+    Acconsento alla pubblicazione del mio CV in ottemperanza alle disposizioni di legge dettate in materia di trasparenza (D.Lgs. 33/2013).
+  }{}
 
   \end{europasscv}
 \end{document}
