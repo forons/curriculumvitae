@@ -228,3 +228,4 @@ Makefile.europasscvcurriculum.pdf
 
 # REMOVE SIGNATURE FROM ADD
 signature.*
+curriculum-*
