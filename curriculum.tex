@@ -21,6 +21,10 @@
     pdflatex --jobname=\jobname-noinfo
     "\gdef\string\condition{1}
     \string\input\space\jobname"}
+  \immediate\write18{
+    pdflatex --jobname=\jobname-original
+    "\gdef\string\condition{2}
+    \string\input\space\jobname"}
   \expandafter\stop
 \fi
 
@@ -39,6 +43,11 @@
   \global\togglefalse{personalinfo}
   \global\toggletrue{space}
   \global\toggletrue{authorization}
+  \global\togglefalse{signature}
+\or
+  \global\toggletrue{personalinfo}
+  \global\togglefalse{space}
+  \global\togglefalse{authorization}
   \global\togglefalse{signature}
 \fi
 
@@ -72,7 +81,7 @@
   \ecvtitle{December 2017 -- June 2018}{PhD Intern at Huawei}
   \ecvitem{}{Huawei ERC, Munich, Germany}
   \ecvitem{}{Visiting researcher working on dynamic scheduling resources for streaming queries in a distributed environment.}
-  \ecvitem{}{\ecvhighlight{Technologies Used}\quad Flink, Kafka, Java, Scala, HDFS, Spark, Python, Bash}
+  \ecvitem{}{\ecvhighlight{Technologies Used}\quad Flink, Kafka, Java, Scala, Hadoop, Spark, Python, Bash}
 
   \ecvtitle{September 2016 -- Present}{Xplainbox Framework for Data Analysis}
   \ecvitem{}{Industrial project that receives a stream of data, stores it, and then performs analysis and applies ML algorithms on it.}
@@ -119,39 +128,50 @@
   \ecvtitle{2012 -- 2014}{Master Degree in Computer Science}
   \ecvitem{}{University of Trento, Trento - Italy}
   \ecvitem{}{
-      \begin{ecvitemize}
-	\item \textbf{Grade}: 102/110
-	% \item \textbf{Exams Grade Weighted Average}: 26,7 (Over 30)
-	\item \textbf{Thesis}: Entity identification with dynamic matching rules selection
-  \newline Research and development of a tool that is able to perform entity identification dynamically applying rules defined by users.
-  \item \textbf{Supervisor}: Yannis Velegrakis
-      \end{ecvitemize}
+    \begin{ecvitemize}
+    	\item \textbf{Grade}: 102/110
+    	% \item \textbf{Exams Grade Weighted Average}: 26,7 (Over 30)
+    	\item \textbf{Thesis}: Entity identification with dynamic matching rules selection
+      \newline
+      Research and development of a tool that is able to perform entity identification dynamically applying rules defined by users.
+      \item \textbf{Supervisor}: Yannis Velegrakis
+    \end{ecvitemize}
   }
 
   \ecvtitle{2009 -- 2012}{Bachelor Degree in Computer Science}
   \ecvitem{}{University of Trento, Trento - Italy}
   \ecvitem{}{
-      \begin{ecvitemize}
-  \item \textbf{Grade}: 97/110
-  % \item \textbf{Exams Grade Weighted Average}: 25,5 (Over 30)
-  % \item \textbf{Thesis}: ACuve Hub: an integrative module for managing and routing alarms through Event-Driven and Service-Oriented architectures
-  % \newline Development of a middleware that receives and forward to the right target structured events or alarms from different sources into a protected healtcare structure.
-  % \item \textbf{Supervisor}: Maurizio Marchese and Jovan Stevovic
-      \end{ecvitemize}
+    \begin{ecvitemize}
+      \item \textbf{Grade}: 97/110
+      % \item \textbf{Exams Grade Weighted Average}: 25,5 (Over 30)
+      % \item \textbf{Thesis}: ACuve Hub: an integrative module for managing and routing alarms through Event-Driven and Service-Oriented architectures
+      % \newline
+      % Development of a middleware that receives and forward to the right target structured events or alarms from different sources into a protected healtcare structure.
+      % \item \textbf{Supervisor}: Maurizio Marchese and Jovan Stevovic
+    \end{ecvitemize}
   }
 
   \ecvsection{Publications}
 
-  \ecvblueitem{2018}{\textbf{Moira: A Goal-Oriented Incremental Machine Learning Approach to Dynamic Resource Cost Estimation in Distributed Stream Processing Systems} \newline
-  D. Foroni, C. Axenie, S. Bortoli, M. Al Hajj Hassan, R. Acker, R. Tudoran, G.Brasche and Y. Velegrakis. In \emph{International Workshop on Real-Time Business Intelligence and Analytics (BIRTE ’18)}
+  \ecvblueitem{2018}{
+    \textbf{Moira: A Goal-Oriented Incremental Machine Learning Approach to Dynamic Resource Cost Estimation in Distributed Stream Processing Systems}
+    \newline
+    D. Foroni, C. Axenie, S. Bortoli, M. Al Hajj Hassan, R. Acker, R. Tudoran, G.Brasche, and Y. Velegrakis.
+    In \emph{International Workshop on Real-Time Business Intelligence and Analytics (BIRTE ’18)}
   }
 
-  \ecvblueitem{2017}{\textbf{Putting Data Quality in Context} \newline
-  D. Foroni, M. Lissandrini and Y. Velegrakis. Submitted at \emph{IEEE BigData '18}
+  \ecvblueitem{2018}{
+    \textbf{Putting Data Quality in Context}
+    \newline
+    D. Foroni, M. Lissandrini, and Y. Velegrakis.
+    Submitted at \emph{IEEE BigData '18}
   }
 
-  \ecvblueitem{2017}{\textbf{On Contextualizing Data Quality} \newline
-  D. Foroni, M. Lissandrini and Y. Velegrakis. Ready for submission at \emph{SIGMOD Record}
+  \ecvblueitem{2018}{
+    \textbf{On Contextualizing Data Quality}
+    \newline
+    D. Foroni, M. Lissandrini, and Y. Velegrakis.
+    Ready for submission at \emph{SIGMOD Record}
   }
 
   \ecvsection{Personal skills}
@@ -162,11 +182,11 @@
   \ecvlanguagefooter
 
   \ecvblueitem{Skills}{
-  \begin{ecvitemize}
-    \item team work and mediating skills: I am the responsible of a group of 30 teenagers and the leader of the educators
-    \item decision skills: I was a football referee, where you have little time to take decisions.
-    \item problem solving: from my previous occupations
-  \end{ecvitemize}
+    \begin{ecvitemize}
+      \item team work and mediating skills: I am the responsible of a group of 30 teenagers and the leader of the educators.
+      \item decision skills: I was a football referee, where you have little time to take decisions.
+      \item problem solving: from my previous occupations
+    \end{ecvitemize}
   }
 
   % \ecvblueitem{Organisational / managerial skills}{
@@ -179,18 +199,25 @@
 
   % \ecvblueitem{Driving License}{B}
 
-  \ecvblueitem{Computer skills}{Principal languages: Java, Scala, Python (2.7 and 3), Bash, GoLang, C\#.\newline Big data technologies: Hadoop, Spark, Flink, Kafka, Pig, Hive. I teach these technologies at the Master course \textit{Big Data and Social Network} at the University of Trento.}
+  \ecvblueitem{Computer skills}{
+    Principal languages: Java, Scala, Python (2.7 and 3), Bash, GoLang, C\#.
+    \newline
+    Big data technologies: Hadoop, Spark, Flink, Kafka, Pig, Hive.
+    I teach these technologies at the Master course \textit{Big Data and Social Network} at the University of Trento.
+  }
 
   \iftoggle{signature}{
-    \vspace*{50pt}
+    \vspace*{2em}
     \begin{figure}[!hb]
-    \centering
-    \includegraphics[width=0.3\textwidth]{signature.pdf}
+      \centering
+      \includegraphics[width=0.3\textwidth]{signature.pdf}
     \end{figure}
   }{}
 
   \iftoggle{authorization}{
-    Acconsento alla pubblicazione del mio CV in ottemperanza alle disposizioni di legge dettate in materia di trasparenza (D.Lgs. 33/2013).
+    \ecvblueitem{}{
+      Acconsento alla pubblicazione del mio CV in ottemperanza alle disposizioni di legge dettate in materia di trasparenza (D.Lgs. 33/2013).
+    }
   }{}
 
   \end{europasscv}
