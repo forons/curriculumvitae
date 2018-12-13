@@ -262,7 +262,7 @@
 \DeclareOption{totpages}{%
   \AtEndOfPackage{\RequirePackage{totpages}%
   \def\ecv@totpages{~/~\ref{TotPages}}
-  %\ecvpage{\ecv@pagekey~\thepage~/~\ref{TotPages}}%
+  % \ecvpage{\ecv@pagekey~\thepage~/~\ref{TotPages}}%
   }%
 }
 
@@ -279,7 +279,8 @@
   \PassOptionsToClass{\CurrentOption}{article}%
 }
 
-\ExecuteOptions{english,hrule,totpages} % Default options
+% \ExecuteOptions{english,hrule,totpages} % Default options
+\ExecuteOptions{english,hrule} % Default options
 
 \ProcessOptions\relax
 
