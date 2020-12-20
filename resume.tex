@@ -1,0 +1,251 @@
+% !TEX encoding = UTF-8
+% !TEX TS-program = pdflatex
+% !TEX spellcheck = en-US
+
+\documentclass[10pt,a4paper,colorlinks,linkcolor=true]{moderncv}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\moderncvtheme[blue]{banking}
+\nopagenumbers{}
+
+\usepackage[T1]{fontenc}
+\usepackage[scale=0.85]{geometry}
+\recomputelengths
+
+\usepackage{eurosym}
+\usepackage{soul} %underline
+
+%\moderncvhead{1}  % <===================================================
+\moderncvbody{1} % Body of casual style    % <=========================
+\moderncvfoot{1} % Footer of casual style  % <=========================
+
+\setlength{\hintscolumnwidth}{1.5cm}
+
+\firstname{Daniele}
+\lastname{Foroni}
+\title{Ph.D.}
+\phone{+39 348 068 7589}                    % optional, remove / comment the line if not wanted
+\email{daniele.foroni@gmail.com}            % optional, remove / comment the line if not wanted
+\homepage{forons.github.io}                 % optional, remove / comment the line if not wanted
+\social[twitter]{forons}
+\social[github]{forons}
+\social[linkedin]{daniele.foroni}
+
+\renewcommand*{\sectionfont}{\Large\upshape}
+
+\newcommand*{\cvpublication}[5]{%
+  \cvline{#1}{
+    \begin{minipage}[t]{.76\maincolumnwidth}\emph{#2}\\
+      \footnotesize{\color{gray} #4}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]
+      {0.20\maincolumnwidth}\raggedleft\footnotesize \textbf{#3} \\
+      \scriptsize{#5}
+    \end{minipage}
+  }
+}
+
+\renewcommand*{\hintfont}{\footnotesize\sffamily}
+
+\newcommand{\cvlink}[2]{\href{#1}{\ul{#2}}}
+\newcommand{\danieleauthor}{\textbf{\textcolor{color1}{D. Foroni}}}
+\newcommand{\doilink}[2]{\href{#1}{\texttt{\ul{#2}}}}
+
+\begin{document}
+\hypersetup{urlcolor=color1}
+
+\makecvtitle
+\pagestyle{empty} % Removes footer
+\setlength{\parskip}{0.4ex}
+
+\vspace*{-5mm}
+
+My research focus on Big Data Management and Analysis, particularly to the application where they can improve the current systems.
+Recently, I worked on managing traffic data from smart cities and exploiting it to optimize the traffic lights, predict and manage congestions, or in general reduce the traffic in certain area.
+During the PhD, I studied how to improve the quality of the data by considering the involved application and the optimization metric the user has in mind, as well as the intrinsic value of the data.
+To do so, I built F4U, a framework for measuring the impact of some noise on the accuracy of the results, and Moira, a system to dynamically allocate the right amount of resources to optimize the goal metric defined by the user.
+
+
+%************************************************
+%************************************************
+\section{Current position}
+%************************************************
+%************************************************
+
+\cventry{From 2019 August}{Big Data Senior Research Engineer}{Huawei ERC (European Research Center)}{Munich}{Germany}
+  {Research and develop Big Data technologies with special focus on real-time and streaming technologies, and techniques for traffic management optimization in smart city environments.}
+
+
+%************************************************
+%************************************************
+\section{Education}
+%************************************************
+%************************************************
+
+\cventry{2014--2019}{PhD in Computer Science}{University of Trento}{Italy}{}
+  {Thesis: \emph{Putting Data Quality in Context: How to generate more accurate analyses.}\\
+  Advisor: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
+
+\cventry{2012--2014}{Master of Science in Computer Science}{University of Trento}{Italy}{\textit{102/110}}{}
+
+\cventry{2009--2012}{Bachelor of Science in Computer Science}{University of Trento}{Italy}{\textit{97/110}}{}
+
+
+%************************************************
+%************************************************
+\section{Work Experience}
+%************************************************
+%************************************************
+
+\cventry{2018 Oct--Present}{CTO and Developer}{IOHub}{Rovereto}{Italy}
+  {Development of technologies and solutions for financial invoices for Italian businesses and citizens, providing an integration with the ad-hoc system created by the Italian Revenue Agency.}
+
+\cventry{2017--2018}{PhD Intern}{Huawei ERC}{Munich}{Germany}
+  {Visiting researcher working on dynamic rescheduling resources for streaming queries in a distributed environment based on the goal metric defined by the user.\\
+  Advisors: \cvlink{https://www.linkedin.com/in/stefano-bortoli/}{Stefano Bortoli} and \cvlink{https://www.linkedin.com/in/radu-tudoran-37545643/}{Radu Tudoran}}
+
+\cventry{2016--2017}{Data Scientist}{University of Trento and Saidea SRL}{Trento}{Italy}
+  {Development of XplainBox, an industrial project that from a stream of data, stores it and then analyses and applies ML algorithms on it.}
+
+\cventry{2014 Feb--Nov}{Intern Data Engineer}{Engineering Tributi SPA}{Trento}{Italy}
+  {Development of a tool for entity resolution by integrating multiple sources from the public administrative domain. Given a set of rules, the proposed solution builds a lattice of operations that efficiently and effectively find similar entities without running several algorithms over the whole dataset.\\
+  Advisor: \cvlink{https://www.linkedin.com/in/nicolamezzetti/}{Nicola Mezzetti}}
+
+
+%************************************************
+%************************************************
+\section{Teaching Experience}
+%************************************************
+%************************************************
+
+\cventry{2015--2019}{TA, Big Data and Social Networks}{University of Trento}{Trento}{Italy}
+  {Computer Science and Data Science Master course about Big Data technologies that covers from the storage of such an amount of data (NoSQL, HDFS) to its analysis (Hadoop MapReduce, Spark, ML models, Streaming, Graph processing).\\
+  Professor: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
+
+\cventry{2017}{Big Data Technologies}{TIM}{Trento}{Italy}
+  {Both on site and remote course about Big Data technologies for scientists working in TIM. The program covered from the storage of such an amount of data (NoSQL, HDFS) to its analysis (Hadoop MapReduce, Spark, ML models, Streaming, Graph processing).\\
+  Reference: \cvlink{https://www.linkedin.com/in/michele-vescovi/}{Michele Vescovi}}}
+
+\cventry{2015--2016}{TA, Programming for Mathematicians}{University of Trento}{Trento}{Italy}
+  {Bachelor course for introducing Math students to programming.\\
+  Professor: \cvlink{https://scholar.google.it/citations?user=ojru0uEAAAAJ}{Roberto Zunino}}
+
+
+%************************************************
+%************************************************
+\section{Invited Talks}
+%************************************************
+%************************************************
+
+\cventry{2020}{From Apache Hadoop to Apache Spark - A Big Data journey}{University of Trento}{Trento}{Italy}
+  {Talk about Big Data tools, with particular focus on Apache Hadoop and an in-depth analysis of Apache Spark and its libraries.\\
+   Reference: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
+
+
+%************************************************
+%************************************************
+\section{Skills}
+%************************************************
+%************************************************
+
+\cvlanguage{Programming}{Python · Java · Scala · C\# · SQL · Javascript}{}
+\cvlanguage{Framework}{Apache Spark · Flink · Kafka · Hadoop · NoSQL}{}
+\cvlanguage{Certifications}{Scalable Machine Learning with Apache Spark}{}
+\cvlanguage{OS \& Tools}{Linux · Bash · Git}{}
+\cvlanguage{AI}{Machine Learning · Data Mining · Deep Learning}{}
+
+
+%************************************************
+%************************************************
+\section{Publications}
+%************************************************
+%************************************************
+
+% \cvpublication{2021}{Putting Data Quality in Context}{Under review in TKDE}
+%   {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{}
+
+% \cvpublication{2021}{F4U: The Contextualized Data Quality System}{Under review in VLDB}
+%   {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{}
+
+% \cvpublication{2021}{On Contextualizing Data Quality}{\hspace{-20pt}Submitted to Sigmod Record}
+%   {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{}
+
+\cvpublication{2020}{Real-time Traffic Jam Detection and Congestion Reduction Using Streaming Graph Analytics}{BSD 2020}
+  {Z. Abbas, P. Sottovia, M. Al Hajj Hassan, \danieleauthor, S. Bortoli}{}
+  % {\hspace{-20pt}\doilink{https://doi.org/10.1145/3242153.3242160}{doi:10.1145/3242153.3242160}}
+
+\cvpublication{2018}{Moira: A Goal-Oriented Incremental Machine Learning Approach to Dynamic Resource Cost Estimation in Distributed Stream Processing Systems}{BIRTE '19}
+  {\danieleauthor, C. Axenie, S. Bortoli, M. Al Hajj Hassan, R. Acker, R. Tudoran, G. Brasche, and Y. Velegrakis}
+  {\hspace{-20pt}\doilink{https://doi.org/10.1145/3242153.3242160}{doi:10.1145/3242153.3242160}}
+
+\cvpublication{2018}{STARLORD: Sliding Window Temporal Accumulate-Retract Learning for
+Online Reasoning on Datastreams}{ICMLA '18}
+  {C. Axenie, R. Tudoran, S. Bortoli, M. Al Hajj Hassan, \danieleauthor, and G. Brasche}
+  {\hspace{-20pt}\doilink{https://doi.org/10.1109/ICMLA.2018.00181}{doi:10.1109/ICMLA.2018.00181}}
+
+\cvpublication{2018}{Data Management and Smart Cities}{UniTN - White Paper '18}
+  {M. Brugnara, C. Consonni, \danieleauthor, S. Pasupathipillai, G. Preti, P. Sottovia, and Y. Velegrakis}
+  {\doilink{https://event.unitn.it/smartcities-trento/Trento_WP_Brugnara1.pdf}{Trento - Smart Cities}}
+
+% \cvpublication{2016}{\scalebox{.98}[1.0]{Are safer looking neighborhoods more lively? a multimodal investigation into urban life}}{ACM MM '16}{\marcoauthor, R. Vieriu, G. Zen, S. Dragicevic, N. Naik, M. Caraviello, C. A. Hidalgo, N. Sebe, and B. Lepri.}{\doilink{https://doi.org/10.1145/2964284.2964312}{doi:10.1145/ 2964284.2964312}}
+
+
+%************************************************
+%************************************************
+\section{Projects}
+%************************************************
+%************************************************
+
+\cventry{2020}{Exploit data information for Entity Matching}{Ongoing work}{}{}
+  {Exploit the intrinsic value of the data through a profile to improve the accuracy of the duplicates found.}
+
+\cventry{2017}{Data Quality Measurement}{Ongoing work}{}{}
+  {Providing the user an estimation of the quality of a dataset for a specific application.}
+
+\cventry{2017}{Data Lake analysis through SQL queries, statistics, Data Mining and ML techniques}{Industrial project}{}{}
+  {Designed a flow, from the reading of the data to its analysis, which is performed with Data Mining and Machine Learning algorithms combined with statistics and queries defined by the users, to show the key insights from the available data.}
+
+
+% %************************************************
+% %************************************************
+% \section{Awards}
+% %************************************************
+% %************************************************
+
+% \cvitemwithcomment{2017}{\textbf{Microsoft Azure Research Award.} Azure cloud credits for my research.}{\EUR{20,000.00}}
+
+% \cvitemwithcomment{2017}{\textbf{1st Place.} Italian Football Federation Match Analysis competition.}{\EUR{5,000.00}}
+
+% \cvitemwithcomment{2017}{\textbf{Travel and Accomodation Grant.} Computational Social Science Summer school.}{}
+
+% \cvitemwithcomment{2016}{\textbf{Travel Grant.} ACM grant for the Multimedia 2016 conference.}{}
+
+% \cvitemwithcomment{2016}{\textbf{Travel Grant.} Google grant for the WWW 2016 conference.}{}
+
+% \cvitemwithcomment{2016}{\textbf{Best Master student.} University of Trento.}{}
+
+
+%************************************************
+%************************************************
+\section{Other activities}
+%************************************************
+%************************************************
+
+\cvitemwithcomment{PC member}{SEA Data 2020}{}
+\cvlanguage{Reviewer}{CSGRID · EDBT · JPDC · ICMLA · VLDB · KDD · SIGMOD Record}{}
+
+
+%************************************************
+%************************************************
+\section{Languages}
+%************************************************
+%************************************************
+
+\cvitemwithcomment{English}{Full professional proficiency (C1)}{}
+\cvitemwithcomment{German}{Basic knowledge (A1)}{}
+\cvitemwithcomment{Italian}{Native}{}
+
+
+\thispagestyle{plain} % Add footer
+\end{document}
