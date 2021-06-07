@@ -3,28 +3,51 @@
 % !TEX spellcheck = en-US
 
 \documentclass[10pt,a4paper,colorlinks,linkcolor=true]{moderncv}
+% \moderncvstyle{banking}
+\moderncvcolor{blue}
+\usepackage{newpxtext}
+
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\moderncvtheme[blue]{banking}
+% \usepackage{fontawesome}
+\moderncvicons{awesome}
+\moderncvhead{3}
+% \moderncvtheme[blue]{banking}
 \nopagenumbers{}
+
 
 \usepackage[T1]{fontenc}
 \usepackage[scale=0.85]{geometry}
-\recomputelengths
 
 \usepackage{eurosym}
 \usepackage{soul} %underline
 
-%\moderncvhead{1}  % <===================================================
+\usepackage{etoolbox}
+\patchcmd{\makehead}% <cmd>
+  {0.8\textwidth}% <search>
+  {\textwidth}% <replace>
+  {}{}% <success><failure>
+
+% \moderncvhead{1}  % <===================================================
 \moderncvbody{1} % Body of casual style    % <=========================
 \moderncvfoot{1} % Footer of casual style  % <=========================
+
+\renewcommand*{\recomputefootlengths}{%
+  \setlength{\footwidth}{\textwidth}} % original: 0.8\textwidth
+
+\recomputelengths
+
+\newcommand{\cvlanguagesplit}[3]{%
+  \cvlanguage{#1}{\parbox[t]{\maincolumnwidth}{#2}}{#3}%
+}
+
 
 \setlength{\hintscolumnwidth}{1.5cm}
 
 \firstname{Daniele}
-\lastname{Foroni}
+\familyname{Foroni}
 \title{Ph.D.}
-\phone{+39 348 068 7589}                    % optional, remove / comment the line if not wanted
+% \phone{+39 348 068 7589}                    % optional, remove / comment the line if not wanted
 \email{daniele.foroni@gmail.com}            % optional, remove / comment the line if not wanted
 \homepage{forons.github.io}                 % optional, remove / comment the line if not wanted
 \social[twitter]{forons}
@@ -62,9 +85,9 @@
 \vspace*{-5mm}
 
 My research focuses on Big Data Management and Analysis, particularly to the applications where they can improve the current systems.
-Currently, I am working on managing traffic data from smart cities to optimize the traffic lights, predicting and managing congestions, and reducing the traffic in certain area through regional technologies.
+Currently, I am working on managing traffic data from smart cities to optimize the traffic lights, predicting and managing congestion, and reducing the traffic in certain area through regional technologies.
 During the PhD, I studied how to improve the quality of the data by considering the involved application and the optimization metrics the user has in mind, as well as the intrinsic value of the data.
-To do so, I built F4U, a framework for measuring the impact of the noise on the accuracy of the results, and Moira, a system to dynamically allocate the appropriate amount of resources to optimize the goal metric defined by the user.
+% To do so, I built and published about F4U, a framework for measuring the impact of the noise on the accuracy of the results, and Moira, a system to dynamically allocate the appropriate amount of resources to optimize the goal metric defined by the user.
 
 
 %************************************************
@@ -73,8 +96,9 @@ To do so, I built F4U, a framework for measuring the impact of the noise on the 
 %************************************************
 %************************************************
 
-\cventry{From 2019 August}{Big Data Senior Research Engineer}{Huawei MRC (Munich Research Center)}{Munich}{Germany}
-  {Research and develop Big Data technologies with special focus on real-time and streaming technologies, and techniques for traffic management optimization in smart city environments.}
+\cventry{From 2019 Aug--\emph{Now}}{Big Data Senior Research Engineer}{Huawei MRC (Munich Research Center)}{Munich}{Germany}{
+  Research and develop Big Data technologies with special focus on real-time and streaming technologies, and techniques for traffic management optimization in smart city environments. Mainly, I create algorithms for optimizing the traffic and finding anomalies in the traffic patterns. Moreover, I deliver directly to product the created optimization and new features developed by the team. I am also the codebase, CI, and servers maintainer.
+}
 
 
 %************************************************
@@ -84,8 +108,7 @@ To do so, I built F4U, a framework for measuring the impact of the noise on the 
 %************************************************
 
 \cventry{2014--2019}{PhD in Computer Science}{University of Trento}{Italy}{}
-  {Thesis: \emph{Putting Data Quality in Context: How to generate more accurate analyses.}\\
-  Advisor: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
+  {Thesis: \emph{Putting Data Quality in Context: How to generate more accurate analyses}. Advisor: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
 
 \cventry{2012--2014}{Master of Science in Computer Science}{University of Trento}{Italy}{\textit{102/110}}{}
 
@@ -98,50 +121,54 @@ To do so, I built F4U, a framework for measuring the impact of the noise on the 
 %************************************************
 %************************************************
 
-\cventry{2018 Oct--Present}{CTO and Developer}{IOHub}{Rovereto}{Italy}
-  {Development of technologies and solutions for financial invoices for Italian businesses and citizens, providing an integration with the ad-hoc system created by the Italian Revenue Agency.\\
-  CEO: \cvlink{https://www.linkedin.com/in/gianmaria-conti-38303712/}{Gianmaria Conti}}
+\cventry{From 2018 Oct--\emph{Now}}{CTO and Developer}{IOHub}{Rovereto}{Italy}
+  {Start-up that develops technologies and solutions for both Italian citizens and businesses about the Italian electronic invoicing system, providing an integration with the Italian Revenue Agency system and a distributed and privacy-aware product. CEO: \cvlink{https://www.linkedin.com/in/gianmaria-conti-38303712/}{Gianmaria Conti}}
 
-\cventry{2017--2018}{PhD Intern}{Huawei ERC}{Munich}{Germany}
-  {Visiting researcher working on dynamic rescheduling resources for streaming queries in a distributed environment based on the goal metric defined by the user.\\
-  Advisors: \cvlink{https://www.linkedin.com/in/stefano-bortoli/}{Stefano Bortoli} and \cvlink{https://www.linkedin.com/in/radu-tudoran-37545643/}{Radu Tudoran}}
+\cventry{2017--2018}{Research Engineer Intern}{Huawei ERC}{Munich}{Germany}
+  {Visiting researcher working on dynamic rescheduling resources for streaming queries in a distributed environment based on the goal metric defined by the user. Advisors: \cvlink{https://www.linkedin.com/in/stefano-bortoli/}{Stefano Bortoli} and \cvlink{https://www.linkedin.com/in/radu-tudoran-37545643/}{Radu Tudoran}}
 
 \cventry{2016--2017}{Data Scientist}{University of Trento and Saidea SRL}{Trento}{Italy}
-  {Development of XplainBox, an industrial project that from a stream of data, stores it and then analyses and applies ML algorithms on it.}
+  {Development of XplainBox, an industrial tool that reads and stores data in a streaming fashion, and then performs analyses and applies ML algorithms on the stored data.}
 
-\cventry{2014 Feb--Nov}{Intern Data Engineer}{Engineering Tributi SPA}{Trento}{Italy}
-  {Development of a tool for entity resolution by integrating multiple sources from the public administrative domain. Given a set of rules, the proposed solution builds a lattice of operations that efficiently and effectively find similar entities without running several algorithms over the whole dataset.\\
-  Advisor: \cvlink{https://www.linkedin.com/in/nicolamezzetti/}{Nicola Mezzetti}}
-
-
-%************************************************
-%************************************************
-\section{Teaching}
-%************************************************
-%************************************************
-
-\cventry{2015--2019}{TA, Big Data and Social Networks}{University of Trento}{Trento}{Italy}
-  {Computer Science and Data Science Master course about Big Data technologies that covers from the storage of such an amount of data (NoSQL, HDFS) to its analysis (Hadoop MapReduce, Spark, ML models, Streaming, Graph processing), with some notions of Data Mining techniques.\\
-  Professor: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
-
-\cventry{2017}{Big Data Technologies}{TIM}{Trento}{Italy}
-  {Course about Big Data technologies for scientists working in TIM. The program covered from the storage of such an amount of data (NoSQL, HDFS) to its analysis (Hadoop MapReduce, Spark, ML models, Streaming, Graph processing).\\
-  Reference: \cvlink{https://www.linkedin.com/in/michele-vescovi/}{Michele Vescovi}}
-
-\cventry{2015--2016}{TA, Programming for Mathematicians}{University of Trento}{Trento}{Italy}
-  {Bachelor course for introducing Math students to programming.\\
-  Professor: \cvlink{https://scholar.google.it/citations?user=ojru0uEAAAAJ}{Roberto Zunino}}
+\cventry{2014 Feb--Nov}{Data Engineer Intern}{Engineering Tributi SPA}{Trento}{Italy}
+  {Development of an entity resolution tool that, with a set of rules, builds a lattice of operations to compare similar entities, avoiding running meaningless comparisons. Advisor: \cvlink{https://www.linkedin.com/in/nicolamezzetti/}{Nicola Mezzetti}}
 
 
 %************************************************
 %************************************************
-\section{Invited Talks}
+\section{Teaching, Lectures, and Talks}
 %************************************************
 %************************************************
 
-\cventry{2020}{From Apache Hadoop to Apache Spark - A Big Data journey}{University of Trento}{Trento}{Italy}
-  {Talk about Big Data tools, with a particular focus on Apache Hadoop and an in-depth analysis of Apache Spark and its libraries.\\
-   Reference: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
+\cventry{2021}{Invited Talk, ``Apache Spark - Notions and Lab Session''}{Utrecht University}{Utrecht}{The Netherlands}
+  {Talk and lab session for the Data Intensive Course about Apache Hadoop and, in particular, Apache Spark and its libraries, with lab exercises, demo, and practical showcases. Reference: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
+
+\cventry{2020}{Invited Talk, ``From Hadoop to Spark - A Big Data Journey''}{University of Trento}{Trento}{Italy}
+  {Talk about Big Data tools, with a particular focus on Apache Hadoop and an in-depth analysis of Apache Spark and its libraries. Reference: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
+
+\cventry{2015--2019}{Teaching Assistant, ``Big Data and Social Networks'' course}{University of Trento}{Trento}{Italy}
+  {Master course on Big Data, from the storage (NoSQL, HDFS) to the analysis (MapReduce, Spark, ML models, Streaming, Graph processing), with notions of Data Mining techniques. Professor: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
+
+\cventry{2017}{Lecturer, ``Big data for Data Scientists''}{Telecom Italia - TIM}{Trento}{Italy}
+  {Specialized Big Data course for data scientists at the TIM company on HDFS, Spark, ML models, and Streaming. Reference: \cvlink{https://www.linkedin.com/in/michele-vescovi/}{Michele Vescovi}}
+
+\cventry{2015--2016}{Teaching Assistant, ``Programming for Mathematicians'' course}{University of Trento}{Trento}{Italy}
+  {Bachelor course for introducing Math students to programming. Professor: \cvlink{https://scholar.google.it/citations?user=ojru0uEAAAAJ}{Roberto Zunino}}
+
+
+%************************************************
+%************************************************
+% \section{Invited Talks}
+%************************************************
+%************************************************
+
+% \cventry{2021}{Invited Talk, Apache Spark - Notions and Lab Session}{Utrecht University}{Utrecht}{The Netherlands}
+  % {Talk and lab session for the Data Intensive Course about Apache Hadoop and, in particular, Apache Spark and its libraries, with lab exercises, demo, and practical showcases.\\
+   % Reference: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
+
+% \cventry{2020}{Invited Talk, A Big Data journey}{University of Trento}{Trento}{Italy}
+  % {Talk about Big Data tools, with a particular focus on Apache Hadoop and an in-depth analysis of Apache Spark and its libraries.\\
+   % Reference: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
 
 
 %************************************************
@@ -150,11 +177,11 @@ To do so, I built F4U, a framework for measuring the impact of the noise on the 
 %************************************************
 %************************************************
 
-\cvlanguage{Programming}{Python · Java · Scala · C\# · SQL · Javascript}{}
-\cvlanguage{Framework}{Apache Spark · Flink · Kafka · Hadoop · NoSQL}{}
+\cvlanguage{Programming}{Python · Java · Scala · C\# · SQL · Javascript · PHP}{}
+\cvlanguage{Big Data}{Apache Spark · Apache Flink · Apache Kafka · Apache Hadoop · NoSQL}{}
 \cvlanguage{Certifications}{\cvlink{https://s3.amazonaws.com/verify.edx.org/downloads/2436694a40764beab0a6cfe5bb71c7d7/Certificate.pdf}{Scalable Machine Learning with Apache Spark}}{}
 \cvlanguage{OS \& Tools}{Linux · Bash · Git}{}
-\cvlanguage{AI}{Machine Learning · Data Mining · Deep Learning}{}
+\cvlanguage{AI}{Machine Learning · Data Mining}{}
 
 
 %************************************************
@@ -167,17 +194,18 @@ To do so, I built F4U, a framework for measuring the impact of the noise on the 
 %   {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{}
 
 \cvpublication{2021}{Estimating the Extent of the Effects of Data Quality through Observations}{ICDE 2021}
-  {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{}
+  {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{Av. upon request}
 
 \cvpublication{2021}{The F4U System for Understanding the Effects of Data Quality}{ICDE 2021 Demo}
-  {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{}
+  {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{Av. upon request}
 
 \cvpublication{2020}{Real-time Traffic Jam Detection and Congestion Reduction Using Streaming Graph Analytics}{BSD 2020}
   {Z. Abbas, P. Sottovia, M. Al Hajj Hassan, \danieleauthor, S. Bortoli}
   {\hspace{-50pt}\doilink{https://doi.org/10.1109/BigData50022.2020.9378068}{doi:10.1109/BigData50022.2020.9378068}}
 
 \cvpublication{2018}{Moira: A Goal-Oriented Incremental Machine Learning Approach to Dynamic Resource Cost Estimation in Distributed Stream Processing Systems}{BIRTE 2018}
-  {\danieleauthor, C. Axenie, S. Bortoli, M. Al Hajj Hassan, R. Acker, R. Tudoran, G. Brasche, and Y. Velegrakis}
+  {\danieleauthor, C. Axenie, S. Bortoli, M. Al Hajj Hassan, \dots, and Y. Velegrakis}
+  % {\danieleauthor, C. Axenie, S. Bortoli, M. Al Hajj Hassan, R. Acker, R. Tudoran, G. Brasche, and Y. Velegrakis}
   {\hspace{-20pt}\doilink{https://doi.org/10.1145/3242153.3242160}{doi:10.1145/3242153.3242160}}
 
 \cvpublication{2018}{STARLORD: Sliding Window Temporal Accumulate-Retract Learning for
@@ -185,9 +213,10 @@ Online Reasoning on Datastreams}{ICMLA 2018}
   {C. Axenie, R. Tudoran, S. Bortoli, M. Al Hajj Hassan, \danieleauthor, and G. Brasche}
   {\hspace{-20pt}\doilink{https://doi.org/10.1109/ICMLA.2018.00181}{doi:10.1109/ICMLA.2018.00181}}
 
-\cvpublication{2018}{Data Management and Smart Cities}{UniTN - White Paper '18}
-  {M. Brugnara, C. Consonni, \danieleauthor, S. Pasupathipillai, G. Preti, P. Sottovia, and Y. Velegrakis}
-  {\doilink{https://event.unitn.it/smartcities-trento/Trento_WP_Brugnara1.pdf}{Trento - Smart Cities}}
+\cvpublication{2018}{Data Management and Smart Cities}{IEEE Smart Cities 2018}
+  {M. Brugnara, C. Consonni, \danieleauthor, \dots, G. Preti, P. Sottovia, and Y. Velegrakis}
+  % {M. Brugnara, C. Consonni, \danieleauthor, S. Pasupathipillai, G. Preti, P. Sottovia, and Y. Velegrakis}
+  {\doilink{https://event.unitn.it/smartcities-trento/Trento_WP_Brugnara1.pdf}{UniTN - White Paper '18}}
 
 
 %************************************************
@@ -197,23 +226,24 @@ Online Reasoning on Datastreams}{ICMLA 2018}
 %************************************************
 
 \cventry{2020}{Entity Matching through data profiling}{Ongoing work}{}{}
-  {Exploit the intrinsic value of the data through a profile for improving the accuracy of the duplicates found.}
+  {Exploited the intrinsic value of the data through a profile for improving the accuracy of the duplicates found.}
 
-\cventry{2017--2021}{Data Quality Measurement}{}{}{}
-  {Provide an estimation of the quality of a dataset for the specific application the user has in mind.}
+\cventry{2019}{Data Quality Measurement}{Ongoing work}{}{}
+  {Built the theoretical framework for assessing the dataset quality for the application (task) the user has in mind. This approach is being applied by big companies and additionally it has bee extensively tested with multiple tasks and datasets.}
 
-\cventry{2017}{Data Lake analysis: SQL queries, statistics, Data Mining and ML techniques}{Industrial project}{}{}
-  {Design a flow, from the reading of the data to its analysis, which is performed with Data Mining and Machine Learning algorithms combined with statistics and queries defined by the users, to show the key insights from the available data.}
+\cventry{2017}{Data Lake analysis: SQL, statistics, Data Mining, and ML techniques}{Industrial project}{}{}
+  {Design a flow of Data Mining and Machine Learning algorithms, combined with statistics and queries defined by the users, to show the key insights from the data.}
 
 
 % %************************************************
 % %************************************************
-\section{Awards}
+\section{Awards and Leadership}
 % %************************************************
 % %************************************************
 
 \cvitemwithcomment{2021}{\textbf{Huawei Award.} Future Star Award for the exceptional work in the previous year.}{}
-% \cvitemwithcomment{2021}{\textbf{Huawei MRC Award.} Gold Medal for the exceptional work in the previous year.}{\EUR{20,000.00}}
+\cvitemwithcomment{2020--\emph{Now}}{\textbf{Student guidance.} I guided Master and PhD students during their internships at Huawei.}{}
+\cvitemwithcomment{2019}{\textbf{Soccer Data Challenge.} 2nd place at the \httplink[SoBigData Challenge]{https://www.sobigdata-soccerchallenge.it/trento/} hackaton about football analysis.}{}
 
 %************************************************
 %************************************************
@@ -221,8 +251,8 @@ Online Reasoning on Datastreams}{ICMLA 2018}
 %************************************************
 %************************************************
 
-\cvitemwithcomment{PC member}{SEA Data 2020 · SEA Data 2021}{}
-\cvlanguage{Reviewer}{VLDB · ICDE · KDD · SIGMOD Record · ECML-PKDD · JPDC · ICMLA · CSGRID}{}
+\cvitemwithcomment{PC member}{EDBT 2021 · SEA Data 2020-2021}{}
+\cvlanguagesplit{Reviewer}{VLDB · ICDE · KDD · SIGMOD Record · IEEE BigData · EDBT · ECML-PKDD · JPDC · ICMLA · CSGRID}{}
 
 
 %************************************************
