@@ -1,0 +1,156 @@
+% !TEX encoding = UTF-8
+% !TEX TS-program = pdflatex
+% !TEX spellcheck = en-US
+
+\documentclass[11pt,a4paper,colorlinks,linkcolor=true]{moderncv}
+
+%************************************************
+%************************************************
+% Import packages
+%************************************************
+%************************************************
+\usepackage{newpxtext} % Use Palatino font
+\usepackage[utf8]{inputenc} % This are for non-ASCII letters, like accents
+\usepackage[T1]{fontenc} % This are for non-ASCII letters, like accents
+\usepackage[scale=0.85]{geometry} % This is for shortening/handling the margins
+\usepackage{eurosym} % This is useful for the € symbol
+\usepackage{soul} % Hyphenation for letterspacing, underlining
+\usepackage{etoolbox} % To use \patchcmd for redefining commands
+\usepackage[nodayofweek]{datetime} % To write the current day
+
+%************************************************
+%************************************************
+% Moderncv configuration
+%************************************************
+%************************************************
+\moderncvcolor{blue} % Define the primary color of the cv
+\moderncvicons{awesome} % Use the moderncv icons for socials and addresses
+\moderncvhead{3} % Body of banking style
+\moderncvbody{1} % Body of casual style
+\moderncvfoot{1} % Footer of casual style
+
+%************************************************
+%************************************************
+% Moderncv fix header:
+% - full text width
+% - add space after name-title and before addresses
+%************************************************
+%************************************************
+\makeatletter
+\patchcmd{\makehead} % <cmd>
+  {0.8\textwidth} % <search>
+  {\textwidth} % <replace>
+  {} % <success>
+  {} %<failure>
+\patchcmd{\makehead} % <cmd>
+  {\ifthenelse{\equal{\@title}{}}{}{\titlestyle{~|~\@title}}} % <search>
+  {\ifthenelse{\equal{\@title}{}}{}{\titlestyle{~|~\@title}\vspace{0.5\baselineskip}}} % <replace>
+  {} % <success>
+  {} % <failure>
+\makeatother
+
+
+%************************************************
+%************************************************
+% Create new commands
+%************************************************
+%************************************************
+
+\newcommand{\cvlink}[2]{\href{#1}{\ul{#2}}}
+\nopagenumbers{} % Remove number of pages
+\newdateformat{mydate}{\twodigit{\THEDAY}{ }\monthname[\THEMONTH], \THEYEAR}
+
+%************************************************
+%************************************************
+% Position Information
+%************************************************
+%************************************************
+
+
+\newcommand{\positionname}{Senior Data Engineer}
+\newcommand{\teamname}{AI \& Machine Learning}
+\newcommand{\companyname}{Amazon}
+
+%************************************************
+%************************************************
+% Moderncv header information
+%************************************************
+%************************************************
+\firstname{Daniele}
+\familyname{Foroni}
+\title{Ph.D.}
+% \address{street and number}{postcode city} % optional, remove / comment the line if not wanted
+% \phone{+39 348 068 7589} % optional, remove / comment the line if not wanted
+% \mobile{+39 348 068 7589} % optional, remove / comment the line if not wanted
+% \photo[64pt]{picture} % optional, remove / comment the line if not wanted
+\email{daniele.foroni@gmail.com} % optional, remove / comment the line if not wanted
+\homepage{forons.github.io} % optional, remove / comment the line if not wanted
+\social[twitter]{forons}
+\social[github]{forons}
+\social[linkedin]{daniele.foroni}
+
+
+%************************************************
+%************************************************
+% Begin document
+%************************************************
+%************************************************
+
+\begin{document}
+\hypersetup{urlcolor=color1}
+
+\makecvtitle
+\pagestyle{empty} % Removes footer for the first page
+
+\begin{flushright}
+\mydate
+\today
+\end{flushright}
+
+\vspace*{5mm}
+
+Dear hiring committee,
+
+\vspace*{5mm}
+
+I am pleased to write you for the \positionname{} opening in the \teamname{} team.
+
+\vspace*{3mm}
+
+My experience in Data Engineering and Data Science, both as a researcher and developer, makes me an ideal candidate for the \teamname{} team at \companyname{}. This is proven by the Employee of the Year Award I won in 2020 at Huawei in the same position I am now applying at your company.
+
+\vspace*{3mm}
+
+I can create and deploy in production algorithms that dramatically improve the target KPIs. This is shown by the 2020 Year Award, the publications, and the patents, demonstrating my ability to contribute to novel solutions overcoming the technical limitations of existing approaches.
+
+\vspace*{3mm}
+
+Furthermore, my research has focused on estimating and improving the quality of the data. Dealing with data quality issues is a daily challenge and the team would benefit of my experience and skills, proven by the publications in the field.
+
+\vspace*{3mm}
+
+The team at \companyname{} would also benefit from my experience in studying, using, and even teaching the most important Big Data technologies (e.g., Apache Spark, Apache Flink). Both in industry and academia I have been able to convert research results into products and services.
+
+\vspace*{3mm}
+
+My passion for Data Science and Data Engineer, and the fascination for the potentialities offered by Artificial Intelligence are an ideal fit in the environment at \companyname{} and the challenges ahead for the \teamname{} team. I am confident that my experience, both in industry and in academia would allow me to make valuable contributions to \companyname{}.
+
+\vspace*{3mm}
+
+I would be happy to speak with you if you feel that I would be suitable for this, or any other, position within your company.
+
+\vspace*{3mm}
+
+Thank you for taking the time to read my application, I hope to hear from you soon.
+
+\vspace*{3mm}
+
+Sincerely yours,
+
+\vspace*{10mm}
+
+\textbf{Daniele Foroni}
+
+
+% \thispagestyle{plain} % Add footer
+\end{document}
