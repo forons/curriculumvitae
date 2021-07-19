@@ -3,83 +3,134 @@
 % !TEX spellcheck = en-US
 
 \documentclass[10pt,a4paper,colorlinks,linkcolor=true]{moderncv}
-% \moderncvstyle{banking}
-\moderncvcolor{blue}
-\usepackage{newpxtext}
 
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-% \usepackage{fontawesome}
-\moderncvicons{awesome}
-\moderncvhead{3}
-% \moderncvtheme[blue]{banking}
-\nopagenumbers{}
+%************************************************
+%************************************************
+% Import packages
+%************************************************
+%************************************************
+\usepackage{newpxtext} % Use Palatino font
+\usepackage[utf8]{inputenc} % This are for non-ASCII letters, like accents
+\usepackage[T1]{fontenc} % This are for non-ASCII letters, like accents
+\usepackage[scale=0.85]{geometry} % This is for shortening/handling the margins
+\usepackage{eurosym} % This is useful for the € symbol
+\usepackage{soul} % Hyphenation for letterspacing, underlining
+\usepackage{etoolbox} % To use \patchcmd for redefining commands
 
+%************************************************
+%************************************************
+% Moderncv configuration
+%************************************************
+%************************************************
+\moderncvcolor{blue} % Define the primary color of the cv
+\moderncvicons{awesome} % Use the moderncv icons for socials and addresses
+\moderncvhead{3} % Body of banking style
+\moderncvbody{1} % Body of casual style
+\moderncvfoot{1} % Footer of casual style
 
-\usepackage[T1]{fontenc}
-\usepackage[scale=0.85]{geometry}
+%************************************************
+%************************************************
+% Moderncv fix header:
+% - full text width
+% - add space after name-title and before addresses
+%************************************************
+%************************************************
+\makeatletter
+\patchcmd{\makehead} % <cmd>
+  {0.8\textwidth} % <search>
+  {\textwidth} % <replace>
+  {} % <success>
+  {} %<failure>
+\patchcmd{\makehead} % <cmd>
+  {\ifthenelse{\equal{\@title}{}}{}{\titlestyle{~|~\@title}}} % <search>
+  {\ifthenelse{\equal{\@title}{}}{}{\titlestyle{~|~\@title}\vspace{0.5\baselineskip}}} % <replace>
+  {} % <success>
+  {} % <failure>
+\makeatother
 
-\usepackage{eurosym}
-\usepackage{soul} %underline
-
-\usepackage{etoolbox}
-\patchcmd{\makehead}% <cmd>
-  {0.8\textwidth}% <search>
-  {\textwidth}% <replace>
-  {}{}% <success><failure>
-
-% \moderncvhead{1}  % <===================================================
-\moderncvbody{1} % Body of casual style    % <=========================
-\moderncvfoot{1} % Footer of casual style  % <=========================
-
+%************************************************
+%************************************************
+% Moderncv fix footer:
+% - full text width as it happens for the header
+%************************************************
+%************************************************
 \renewcommand*{\recomputefootlengths}{%
   \setlength{\footwidth}{\textwidth}} % original: 0.8\textwidth
 
 \recomputelengths
 
+\setlength{\hintscolumnwidth}{1.5cm} % The left side is 1.5 cm large
+
+
+%************************************************
+%************************************************
+% Create new commands
+%************************************************
+%************************************************
+
+% Create command for splitting being able to span text on multiple rows
 \newcommand{\cvlanguagesplit}[3]{%
   \cvlanguage{#1}{\parbox[t]{\maincolumnwidth}{#2}}{#3}%
 }
 
-
-\setlength{\hintscolumnwidth}{1.5cm}
-
-\firstname{Daniele}
-\familyname{Foroni}
-\title{Ph.D.}
-% \phone{+39 348 068 7589}                    % optional, remove / comment the line if not wanted
-\email{daniele.foroni@gmail.com}            % optional, remove / comment the line if not wanted
-\homepage{forons.github.io}                 % optional, remove / comment the line if not wanted
-\social[twitter]{forons}
-\social[github]{forons}
-\social[linkedin]{daniele.foroni}
-
-\renewcommand*{\sectionfont}{\Large\upshape}
-
+% Create command for publications:
+% - right side: first row with title, second row with authors
+% - left side: first row with conference name, second row with doi link
 \newcommand*{\cvpublication}[5]{%
-  \cvline{#1}{
-    \begin{minipage}[t]{.76\maincolumnwidth}\emph{#2}\\
-      \footnotesize{\color{gray} #4}
+  \cvline{#1}{ % #1 is the year number
+    \begin{minipage}[t]{.80\maincolumnwidth}\emph{#2}\\ % #2 is the paper title
+      \footnotesize{\color{gray} #4} % #4 is the list of authors
     \end{minipage}
     \hfill
     \begin{minipage}[t]
-      {0.20\maincolumnwidth}\raggedleft\footnotesize \textbf{#3} \\
-      \scriptsize{#5}
+      {0.19\maincolumnwidth}\raggedleft\footnotesize\textbf{#3}\\ % #3 is the conference
+      \scriptsize{#5} % #5 is the doi link
     \end{minipage}
   }
 }
 
+\renewcommand*{\sectionfont}{\Large\upshape}
 \renewcommand*{\hintfont}{\footnotesize\sffamily}
 
 \newcommand{\cvlink}[2]{\href{#1}{\ul{#2}}}
-\newcommand{\danieleauthor}{\textbf{\textcolor{color1}{D. Foroni}}}
 \newcommand{\doilink}[2]{\href{#1}{\texttt{\ul{#2}}}}
+
+
+\newcommand{\danieleauthor}{\textbf{\textcolor{color1}{D. Foroni}}}
+
+
+\nopagenumbers{} % Remove number of pages
+
+%************************************************
+%************************************************
+% Moderncv header information
+%************************************************
+%************************************************
+\firstname{Daniele}
+\familyname{Foroni}
+\title{Ph.D.}
+% \address{street and number}{postcode city} % optional, remove / comment the line if not wanted
+% \phone{+39 348 068 7589} % optional, remove / comment the line if not wanted
+% \mobile{+39 348 068 7589} % optional, remove / comment the line if not wanted
+% \photo[64pt]{picture} % optional, remove / comment the line if not wanted
+\email{daniele.foroni@gmail.com} % optional, remove / comment the line if not wanted
+\homepage{forons.github.io} % optional, remove / comment the line if not wanted
+\social[twitter]{forons}
+\social[github]{forons}
+\social[linkedin]{daniele.foroni}
+
+
+%************************************************
+%************************************************
+% Begin document
+%************************************************
+%************************************************
 
 \begin{document}
 \hypersetup{urlcolor=color1}
 
 \makecvtitle
-\pagestyle{empty} % Removes footer
+\pagestyle{empty} % Removes footer for the first page
 \setlength{\parskip}{0.4ex}
 
 \vspace*{-5mm}
@@ -96,8 +147,8 @@ During the PhD, I studied how to improve the quality of the data by considering 
 %************************************************
 %************************************************
 
-\cventry{From 2019 Aug--\emph{Now}}{Big Data Senior Research Engineer}{Huawei MRC (Munich Research Center)}{Munich}{Germany}{
-  Research and develop Big Data technologies with special focus on real-time and streaming technologies, and techniques for traffic management optimization in smart city environments. Mainly, I create algorithms for optimizing the traffic and finding anomalies in the traffic patterns. Moreover, I deliver directly to product the created optimization and new features developed by the team. I am also the codebase, CI, and servers maintainer.
+\cventry{From 2019 Aug--\emph{Now}}{Senior Big Data Research Engineer}{Huawei MRC (Munich Research Center)}{Munich}{Germany}{
+  Research and develop Big Data technologies with special focus on real-time and streaming technologies, and techniques for traffic management optimization in smart city environments. Mainly, I create algorithms for optimizing the traffic and finding anomalies in the traffic patterns. Moreover, I deliver directly to product the created optimization and new features developed by the team. I am also the codebase, CI, and server maintainer.
 }
 
 
@@ -107,12 +158,25 @@ During the PhD, I studied how to improve the quality of the data by considering 
 %************************************************
 %************************************************
 
-\cventry{2014--2019}{PhD in Computer Science}{University of Trento}{Italy}{}
-  {Thesis: \emph{Putting Data Quality in Context: How to generate more accurate analyses}. Advisor: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
+\cventry{2014--2019}
+  {Ph.D. in Computer Science}
+  {University of Trento}{Italy}
+  {\textit{Program funded by \cvlink{https://www.telecomitalia.com/en/innovation/open-innovation/tim-open-labs.html}{SkilLab - TIM (Telecom Italia)}}}
+  {Thesis title: \emph{Putting Data Quality in Context: How to generate more accurate analyses}. Advisor: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
 
-\cventry{2012--2014}{Master of Science in Computer Science}{University of Trento}{Italy}{\textit{102/110}}{}
+\cventry{2012--2014}
+  {Master of Science in Computer Science}
+  {University of Trento}{Italy}
+  % {\textit{102/110}}
+  {}
+  {}
 
-\cventry{2009--2012}{Bachelor of Science in Computer Science}{University of Trento}{Italy}{\textit{97/110}}{}
+\cventry{2009--2012}
+  {Bachelor of Science in Computer Science}
+  {University of Trento}{Italy}
+  % {\textit{97/110}}
+  {}
+  {}
 
 
 %************************************************
@@ -121,16 +185,28 @@ During the PhD, I studied how to improve the quality of the data by considering 
 %************************************************
 %************************************************
 
-\cventry{From 2018 Oct--\emph{Now}}{CTO and Developer}{IOHub}{Rovereto}{Italy}
-  {Start-up that develops technologies and solutions for both Italian citizens and businesses about the Italian electronic invoicing system, providing an integration with the Italian Revenue Agency system and a distributed and privacy-aware product. CEO: \cvlink{https://www.linkedin.com/in/gianmaria-conti-38303712/}{Gianmaria Conti}}
+\cventry{From 2018 Oct--\emph{Now}}
+  {CTO and Developer}
+  {IOHub}
+  {Rovereto}{Italy}
+  {Start-up that develops technologies and solutions for both Italian citizens and businesses about the Italian electronic invoicing system, providing an integration with the Italian Revenue Agency system and a distributed and privacy-aware product. \cvlink{https://www.iohub.eu/}{IOHub Website} - CEO: \cvlink{https://www.linkedin.com/in/gianmaria-conti-38303712/}{Gianmaria Conti}}
 
-\cventry{2017--2018}{Research Engineer Intern}{Huawei ERC}{Munich}{Germany}
-  {Visiting researcher working on dynamic rescheduling resources for streaming queries in a distributed environment based on the goal metric defined by the user. Advisors: \cvlink{https://www.linkedin.com/in/stefano-bortoli/}{Stefano Bortoli} and \cvlink{https://www.linkedin.com/in/radu-tudoran-37545643/}{Radu Tudoran}}
+\cventry{2017--2018}
+  {Research Engineer Intern}
+  {Huawei ERC}
+  {Munich}{Germany}
+  {Visiting researcher working on dynamic rescheduling resources for streaming queries in a distributed environment based on the goal metrics defined by the user. Advisors: \cvlink{https://www.linkedin.com/in/stefano-bortoli/}{Stefano Bortoli} and \cvlink{https://www.linkedin.com/in/radu-tudoran-37545643/}{Radu Tudoran}}
 
-\cventry{2016--2017}{Data Scientist}{University of Trento and Saidea SRL}{Trento}{Italy}
+\cventry{2016--2017}
+  {Data Scientist}
+  {University of Trento and Saidea SRL}
+  {Trento}{Italy}
   {Development of XplainBox, an industrial tool that reads and stores data in a streaming fashion, and then performs analyses and applies ML algorithms on the stored data.}
 
-\cventry{2014 Feb--Nov}{Data Engineer Intern}{Engineering Tributi SPA}{Trento}{Italy}
+\cventry{2014 Feb--Nov}
+  {Data Engineer Intern}
+  {Engineering Tributi SPA}
+  {Trento}{Italy}
   {Development of an entity resolution tool that, with a set of rules, builds a lattice of operations to compare similar entities, avoiding running meaningless comparisons. Advisor: \cvlink{https://www.linkedin.com/in/nicolamezzetti/}{Nicola Mezzetti}}
 
 
@@ -140,19 +216,34 @@ During the PhD, I studied how to improve the quality of the data by considering 
 %************************************************
 %************************************************
 
-\cventry{2021}{Invited Talk, ``Apache Spark - Notions and Lab Session''}{Utrecht University}{Utrecht}{The Netherlands}
+\cventry{2021}
+  {Invited Talk, \textit{Apache Spark - Notions and Lab Session}}
+  {Utrecht University}
+  {Utrecht}{The Netherlands}
   {Talk and lab session for the Data Intensive Course about Apache Hadoop and, in particular, Apache Spark and its libraries, with lab exercises, demo, and practical showcases. Reference: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
 
-\cventry{2020}{Invited Talk, ``From Hadoop to Spark - A Big Data Journey''}{University of Trento}{Trento}{Italy}
+\cventry{2020}
+  {Invited Talk, \textit{From Hadoop to Spark - A Big Data Journey}}
+  {University of Trento}
+  {Trento}{Italy}
   {Talk about Big Data tools, with a particular focus on Apache Hadoop and an in-depth analysis of Apache Spark and its libraries. Reference: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
 
-\cventry{2015--2019}{Teaching Assistant, ``Big Data and Social Networks'' course}{University of Trento}{Trento}{Italy}
+\cventry{2015--2019}
+  {Teaching Assistant, \textit{Big Data and Social Networks} course}
+  {University of Trento}
+  {Trento}{Italy}
   {Master course on Big Data, from the storage (NoSQL, HDFS) to the analysis (MapReduce, Spark, ML models, Streaming, Graph processing), with notions of Data Mining techniques. Professor: \cvlink{https://scholar.google.it/citations?user=FI1rYesAAAAJ}{Yannis Velegrakis}}
 
-\cventry{2017}{Lecturer, ``Big data for Data Scientists''}{Telecom Italia - TIM}{Trento}{Italy}
+\cventry{2017}
+  {Lecturer, \textit{Big data for Data Scientists}}
+  {Telecom Italia - TIM}
+  {Trento}{Italy}
   {Specialized Big Data course for data scientists at the TIM company on HDFS, Spark, ML models, and Streaming. Reference: \cvlink{https://www.linkedin.com/in/michele-vescovi/}{Michele Vescovi}}
 
-\cventry{2015--2016}{Teaching Assistant, ``Programming for Mathematicians'' course}{University of Trento}{Trento}{Italy}
+\cventry{2015--2016}
+  {Teaching Assistant, \textit{Programming for Mathematicians} course}
+  {University of Trento}
+  {Trento}{Italy}
   {Bachelor course for introducing Math students to programming. Professor: \cvlink{https://scholar.google.it/citations?user=ojru0uEAAAAJ}{Roberto Zunino}}
 
 
@@ -177,10 +268,10 @@ During the PhD, I studied how to improve the quality of the data by considering 
 %************************************************
 %************************************************
 
-\cvlanguage{Programming}{Python · Java · Scala · C\# · SQL · Javascript · PHP}{}
+\cvlanguage{Programming}{Python · Java · Scala · C\# · SQL (Postgres, MySQL) · Javascript · PHP}{}
 \cvlanguage{Big Data}{Apache Spark · Apache Flink · Apache Kafka · Apache Hadoop · NoSQL}{}
 \cvlanguage{Certifications}{\cvlink{https://s3.amazonaws.com/verify.edx.org/downloads/2436694a40764beab0a6cfe5bb71c7d7/Certificate.pdf}{Scalable Machine Learning with Apache Spark}}{}
-\cvlanguage{OS \& Tools}{Linux · Bash · Git}{}
+\cvlanguage{OS \& Tools}{Linux · Bash · Git · Mac OS · Windows}{}
 \cvlanguage{AI}{Machine Learning · Data Mining}{}
 
 
@@ -189,33 +280,46 @@ During the PhD, I studied how to improve the quality of the data by considering 
 \section{Selected Publications}
 %************************************************
 %************************************************
+\cvpublication{2021}
+  {Estimating the Extent of the Effects of Data Quality through Observations}{ICDE 2021}
+  {\danieleauthor, M. Lissandrini, and Y. Velegrakis}
+  {\hspace{-50pt}\doilink{https://doi.org/10.1109/ICDE51399.2021.00176}{doi:10.1109/ICDE51399.2021.00176}}
 
-% \cvpublication{2021}{Putting Data Quality in Context}{Under review in TKDE}
-%   {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{}
+\cvpublication{2021}
+  {The F4U System for Understanding the Effects of Data Quality}{ICDE 2021}
+  {\danieleauthor, M. Lissandrini, and Y. Velegrakis}
+  {\hspace{-50pt}\doilink{https://doi.org/10.1109/ICDE51399.2021.00312}{doi:10.1109/ICDE51399.2021.00312}}
 
-\cvpublication{2021}{Estimating the Extent of the Effects of Data Quality through Observations}{ICDE 2021}
-  {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{Av. upon request}
+\cvpublication{2021}
+  {OBELISC: Oscillator-Based Modelling and Control using Efficient Neural Learning for Intelligent Road Traffic Signal Calculation}{ECML-PKDD 2021}
+  {C. Axenie, \danieleauthor, A. Wieder, M. Al Hajj Hassan, P. Sottovia, \dots, S. Bortoli, and G. Brasche}
+  % {C. Axenie, \danieleauthor, A. Wieder, M. Al Hajj Hassan, P. Sottovia, M. Grossi, R. Shi, S. Bortoli, and G. Brasche}
+  {Av. upon request}
 
-\cvpublication{2021}{The F4U System for Understanding the Effects of Data Quality}{ICDE 2021 Demo}
-  {\danieleauthor, M. Lissandrini, and Y. Velegrakis}{Av. upon request}
+% \cvpublication{2021}{TRAMESINO: Traffic Memory System for Intelligent Optimization of Road Traffic Control}{AALTD 2021}
+  % {C. Axenie, \danieleauthor, A. Wieder, M. Al Hajj Hassan, P. Sottovia, M. Grossi, R. Shi, S. Bortoli, and G. Brasche}{Av. upon request}
+  % {C. Axenie, \danieleauthor, A. Wieder, M. Al Hajj Hassan, P. Sottovia, \dots, S. Bortoli, and G. Brasche}{Av. upon request}
 
-\cvpublication{2020}{Real-time Traffic Jam Detection and Congestion Reduction Using Streaming Graph Analytics}{BSD 2020}
+\cvpublication{2020}
+  {Real-time Traffic Jam Detection and Congestion Reduction Using Streaming Graph Analytics}{BSD 2020}
   {Z. Abbas, P. Sottovia, M. Al Hajj Hassan, \danieleauthor, S. Bortoli}
   {\hspace{-50pt}\doilink{https://doi.org/10.1109/BigData50022.2020.9378068}{doi:10.1109/BigData50022.2020.9378068}}
 
-\cvpublication{2018}{Moira: A Goal-Oriented Incremental Machine Learning Approach to Dynamic Resource Cost Estimation in Distributed Stream Processing Systems}{BIRTE 2018}
+\cvpublication{2018}
+  {Moira: A Goal-Oriented Incremental Machine Learning Approach to Dynamic Resource Cost Estimation in Distributed Stream Processing Systems}{BIRTE 2018}
   {\danieleauthor, C. Axenie, S. Bortoli, M. Al Hajj Hassan, \dots, and Y. Velegrakis}
   % {\danieleauthor, C. Axenie, S. Bortoli, M. Al Hajj Hassan, R. Acker, R. Tudoran, G. Brasche, and Y. Velegrakis}
   {\hspace{-20pt}\doilink{https://doi.org/10.1145/3242153.3242160}{doi:10.1145/3242153.3242160}}
 
-\cvpublication{2018}{STARLORD: Sliding Window Temporal Accumulate-Retract Learning for
+\cvpublication{2018}
+  {STARLORD: Sliding Window Temporal Accumulate-Retract Learning for
 Online Reasoning on Datastreams}{ICMLA 2018}
   {C. Axenie, R. Tudoran, S. Bortoli, M. Al Hajj Hassan, \danieleauthor, and G. Brasche}
   {\hspace{-20pt}\doilink{https://doi.org/10.1109/ICMLA.2018.00181}{doi:10.1109/ICMLA.2018.00181}}
 
-\cvpublication{2018}{Data Management and Smart Cities}{IEEE Smart Cities 2018}
-  {M. Brugnara, C. Consonni, \danieleauthor, \dots, G. Preti, P. Sottovia, and Y. Velegrakis}
-  % {M. Brugnara, C. Consonni, \danieleauthor, S. Pasupathipillai, G. Preti, P. Sottovia, and Y. Velegrakis}
+\cvpublication{2018}
+  {Data Management and Smart Cities}{IEEE Smart Cities 2018}
+  {M. Brugnara, C. Consonni, \danieleauthor, S. Pasupathipillai, G. Preti, P. Sottovia, and Y. Velegrakis}
   {\doilink{https://event.unitn.it/smartcities-trento/Trento_WP_Brugnara1.pdf}{UniTN - White Paper '18}}
 
 
@@ -225,11 +329,11 @@ Online Reasoning on Datastreams}{ICMLA 2018}
 %************************************************
 %************************************************
 
-\cventry{2020}{Entity Matching through data profiling}{Ongoing work}{}{}
-  {Exploited the intrinsic value of the data through a profile for improving the accuracy of the duplicates found.}
-
-\cventry{2019}{Data Quality Measurement}{Ongoing work}{}{}
+\cventry{2019--\emph{Now}}{Data Quality Measurement}{Ongoing work}{}{}
   {Built the theoretical framework for assessing the dataset quality for the application (task) the user has in mind. This approach is being applied by big companies and additionally it has bee extensively tested with multiple tasks and datasets.}
+
+\cventry{2020--\emph{Now}}{Entity Matching through data profiling}{Ongoing work}{}{}
+  {Exploited the intrinsic value of the data through a profile for improving the accuracy of the duplicates found.}
 
 \cventry{2017}{Data Lake analysis: SQL, statistics, Data Mining, and ML techniques}{Industrial project}{}{}
   {Design a flow of Data Mining and Machine Learning algorithms, combined with statistics and queries defined by the users, to show the key insights from the data.}
@@ -241,9 +345,9 @@ Online Reasoning on Datastreams}{ICMLA 2018}
 % %************************************************
 % %************************************************
 
-\cvitemwithcomment{2021}{\textbf{Huawei Award.} Future Star Award for the exceptional work in the previous year.}{}
-\cvitemwithcomment{2020--\emph{Now}}{\textbf{Student guidance.} I guided Master and PhD students during their internships at Huawei.}{}
-\cvitemwithcomment{2019}{\textbf{Soccer Data Challenge.} 2nd place at the \httplink[SoBigData Challenge]{https://www.sobigdata-soccerchallenge.it/trento/} hackaton about football analysis.}{}
+\cvitemwithcomment{2021}{\textbf{Huawei Year Award.} I got the yearly award for the exceptional work in the previous year.}{}
+\cvitemwithcomment{2020--\emph{Now}}{\textbf{Student guidance.} I guided Master and Ph.D. students during their internships.}{}
+% \cvitemwithcomment{2019}{\textbf{Soccer Data Challenge.} 2nd place at the \cvlink{https://www.sobigdata-soccerchallenge.it/trento/}{SoBigData Challenge} hackaton about football analysis.}{}
 
 %************************************************
 %************************************************
@@ -251,7 +355,7 @@ Online Reasoning on Datastreams}{ICMLA 2018}
 %************************************************
 %************************************************
 
-\cvitemwithcomment{PC member}{EDBT 2021 · SEA Data 2020-2021}{}
+\cvitemwithcomment{PC member}{EDBT 2021 · SEA Data 2021 · SEA Data 2020}{}
 \cvlanguagesplit{Reviewer}{VLDB · ICDE · KDD · SIGMOD Record · IEEE BigData · EDBT · ECML-PKDD · JPDC · ICMLA · CSGRID}{}
 
 
